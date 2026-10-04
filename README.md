@@ -21,6 +21,13 @@ The project discovers and interprets regimes. It does not predict prices.
 ## Tech stack
 Python, Flask, pandas, scikit-learn, yfinance · React, Vite, Tailwind CSS
 
+## Data
+Daily OHLCV for SPY, QQQ and the Nifty 50 index (^NSEI), downloaded once from
+yfinance and cached locally as Parquet. Each dataset is validated (NaNs,
+duplicate dates, gaps, zero volume) and cleaned before use. ^NSEI has no
+reliable volume data, so those days are flagged and volume features skip them.
+
 ## Status
-Work in progress. Day 1: project skeleton (Flask API with a health check,
-React frontend connected through a dev proxy).
+Work in progress (21-day MVP). Done so far: project skeleton (Flask API with a
+health check, React frontend connected through a dev proxy) and the data layer
+(loader, validation, caching, unit tests).
